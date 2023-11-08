@@ -5,9 +5,13 @@
 
 #  环境：
 Ubuntu22.04
+
 python > 3.8
+
 selenium = 4.15.2
+
 Google Chrome = 119.0.6045.105
+
 ChromeDriver =119.0.6044.0
 
 原理其实都不难，问题主要出现在Chrome和对应ChromeDriver的安装，还有selenium新版本的用法改动

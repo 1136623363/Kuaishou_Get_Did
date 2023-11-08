@@ -1,9 +1,9 @@
 # Kuaishou_Get_Did
 生成快手did
-原理:
+# 原理:
 使用selenium模拟手机操作，进入快手直播页面获取did
 
-环境：
+#  环境：
 Ubuntu22.04
 python > 3.8
 selenium = 4.15.2
@@ -46,7 +46,7 @@ pip3 install selenium
 ```
 
 
-代码：
+# 代码：
 main.py
 ```
 import json  
@@ -68,25 +68,23 @@ option.add_argument('no-sandbox')
 driver = webdriver.Chrome(options=option)  
   
 # 访问网页  
-driver.get(  
-"https://livev.m.chenzhongtech.com/fw/live/KPL704668133?fid=0&cc=share_wxms&followRefer=151&shareMethod=CARD&kpn=GAME_ZONE&subBiz=LIVE_STEARM_OUTSIDE&shareId=17006290026928&shareToken=X-5EcwumOXxng1uv&shareMode=APP&originShareId=17006290026928&shareObjectId=web_pc&shareUrlOpened=0&timestamp=1655866833281")  
+driver.get("https://livev.m.chenzhongtech.com/fw/live/KPL704668133?fid=0&cc=share_wxms&followRefer=151&shareMethod=CARD&kpn=GAME_ZONE&subBiz=LIVE_STEARM_OUTSIDE&shareId=17006290026928&shareToken=X-5EcwumOXxng1uv&shareMode=APP&originShareId=17006290026928&shareObjectId=web_pc&shareUrlOpened=0&timestamp=1655866833281")  
   
 # 等待网络请求加载完毕（你可以根据需要调整等待时间）  
 time.sleep(3)  
   
-driver.get(  
-"https://livev.m.chenzhongtech.com/fw/live/KPL704668133?fid=0&cc=share_wxms&followRefer=151&shareMethod=CARD&kpn=GAME_ZONE&subBiz=LIVE_STEARM_OUTSIDE&shareId=17006290026928&shareToken=X-5EcwumOXxng1uv&shareMode=APP&originShareId=17006290026928&shareObjectId=web_pc&shareUrlOpened=0&timestamp=1655866833281")  
+driver.get("https://livev.m.chenzhongtech.com/fw/live/KPL704668133?fid=0&cc=share_wxms&followRefer=151&shareMethod=CARD&kpn=GAME_ZONE&subBiz=LIVE_STEARM_OUTSIDE&shareId=17006290026928&shareToken=X-5EcwumOXxng1uv&shareMode=APP&originShareId=17006290026928&shareObjectId=web_pc&shareUrlOpened=0&timestamp=1655866833281")  
   
 # 获取所有网络请求  
 logs = driver.get_log("performance")  
   
 request_list = []  
 for item in logs:  
-log = json.loads(item["message"])["message"]  
-if "Network.requestWillBeSentExtraInfo" in log["method"]:  
-if log["params"]["headers"].get("Cookie"):  
-if "did=" in log["params"]["headers"]["Cookie"]:  
-request_list.append(log)  
+	log = json.loads(item["message"])["message"]  
+	if "Network.requestWillBeSentExtraInfo" in log["method"]:  
+		if log["params"]["headers"].get("Cookie"):  
+			if "did=" in log["params"]["headers"]["Cookie"]:  
+				request_list.append(log)  
 # 关闭浏览器  
 driver.quit()  
 print(request_list[-1]["params"]["headers"]["Cookie"])

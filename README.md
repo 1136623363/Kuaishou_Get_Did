@@ -19,7 +19,7 @@ ChromeDriver =119.0.6044.0
 
 Chrome安装
 ```
-wget https://dl.google.com/linux/chrome/deb/pool/main/g/==google-chrome-stable==/==google-chrome-stable==_==119.0.6045.105==-1_amd64.deb
+wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_119.0.6045.105-1_amd64.deb
 
 sudo dpkg -i google-chrome-stable_119.0.6045.105-1_amd64.deb
 apt -f install
